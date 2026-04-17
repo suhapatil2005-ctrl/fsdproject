@@ -10,19 +10,40 @@
 <body>
 
     <div class="container">
-        <div class="form-box" id="login-form">
+        <div class="form-box active" id="login-form">
             <form action="">
                 <h2>Login</h2>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="password" required>
+                <input type="password" name="CODE" placeholder="college code" required>
                 <button type="submit" name="login">Login</button>
-                <p>Don't have an account? <a href="#">Register</a></p>
-            </form>    
-            
-        
-        
+                <p>Don't have an account? <a href="#" onclick="showform('register-form')">Register</a></p>
+            </form>
         </div>
 
+        <div class="form-box" id="register-form">
+            <form action="">
+                <h2>Register</h2>
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="password" required>
+                <select name="branch" required>
+                    <option value="">--Select Branch--</option>
+                    <option value="AIDS">Artificial Intelligence and data science</option>
+                    <option value="civil engineering"> Civil Engineering</option>
+                    <option value="mechatronics">Mechatronics</option>
+                    <option value="electrical engineering"> Electrical Engineering</option>
+                    <option value="food technology magangement">Food technology magangement</option>
+                </select>
+                <button type="submit" name="register">Register</button>
+                <p>Already have an account? <a href="#" onclick="showform('login-form')">login</a></p>
+            </form>
+        
+
+    
+
     </div>
+
+    <script src="script.js"></script> 
 </body>
 </html>
