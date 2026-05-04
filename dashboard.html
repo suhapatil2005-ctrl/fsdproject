@@ -1,0 +1,51 @@
+<h2>Dashboard</h2>
+
+<h3>Add Doubt</h3>
+<input id="doubt">
+<button onclick="addDoubt()">Post</button>
+
+<ul id="doubtList"></ul>
+
+<h3>Add Notes</h3>
+<input id="note">
+<button onclick="addNote()">Upload</button>
+
+<ul id="noteList"></ul>
+
+<script>
+function addDoubt() {
+  fetch("/add-doubt", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ question: doubt.value })
+  }).then(loadDoubts);
+}
+
+function loadDoubts() {
+  fetch("/doubts")
+  .then(res => res.json())
+  .then(data => {
+    doubtList.innerHTML = data.map(d => `<li>${d.question}</li>`).join("");
+  });
+}
+
+function addNote() {
+  fetch("/add-note", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ title: note.value })
+  }).then(loadNotes);
+}
+
+function loadNotes() {
+  fetch("/notes")
+  .then(res => res.json())
+  .then(data => {
+    noteList.innerHTML = data.map(n => `<li>${n.title}</li>`).join("");
+  });
+}
+
+loadDoubts();
+loadNotes();
+</script>
+<script src="script.js"></script>
